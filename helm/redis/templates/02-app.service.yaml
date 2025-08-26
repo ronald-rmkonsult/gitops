@@ -1,0 +1,20 @@
+
+{{- range .Values.installations }}
+apiVersion: v1
+kind: Service
+metadata: 
+  name: redis-{{ .name }}-service
+  namespace: redis-{{ .name }}
+  labels: 
+    app: redis-{{ .name }}-service
+spec: 
+  ports:
+    - port: 6379
+  selector: 
+    app: redis-{{ .name }}
+  loadBalancerIP:
+
+  ## unhash for traditional kubernetes, or kubernetes distro from Docker Desktop
+  #type: LoadBalancer
+---
+{{- end }}

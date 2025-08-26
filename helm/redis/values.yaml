@@ -1,0 +1,3 @@
+installations:
+  - name: demo
+    memory: 1Gi

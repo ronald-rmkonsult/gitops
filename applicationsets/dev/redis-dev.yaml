@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: redis-dev
+  namespace: infra
+spec:
+  generators:
+  - clusters: {}
+  template:
+    metadata:
+      name: redis-{{name}}
+      labels:
+        kind: infra
+    spec:
+      destination:
+        namespace: redis
+        server: "{{server}}"
+      project: default
+      source:
+        path: helm/redis
+        repoURL: git@github.com:ronald-rmkonsult/gitops.git
+        targetRevision: main
+      syncPolicy:
+        preserveResourcesOnDeletion: true
+        syncOptions:
+          - Replace=false
+          - CreateNamespace=false

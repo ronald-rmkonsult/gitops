@@ -1,0 +1,42 @@
+{{- range .Values.installations }}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-{{ .name }}
+  namespace: redis-{{ .name }}
+  labels:
+    app: redis-{{ .name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-{{ .name }}
+  template:
+    metadata:
+      labels:
+        app: redis-{{ .name }}
+    spec:
+      containers:
+      - name: redis
+        image: redis/{{ .redisversion }}
+        ports:
+        - containerPort: 6379
+        readinessProbe:
+          tcpSocket:
+            port: 6379
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        livenessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 15
+            periodSeconds: 10
+        resources:
+          requests:
+            memory: 512Mi
+          limits:
+            memory: {{ .memory }}
+---
+
+{{- end }}
