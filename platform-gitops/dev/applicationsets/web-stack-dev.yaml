@@ -12,13 +12,9 @@ spec:
             chartPath: app-configs/services/frontend
             namespace: frontend
             valuesFile: values.yaml
-          - name: frontend2
-            chartPath: app-configs/services/frontend
-            namespace: frontend2
-            valuesFile: values.yaml
-          - name: frontend3
-            chartPath: app-configs/services/frontend
-            namespace: frontend3
+          - name: blue-green-app
+            chartPath: app-configs/services/blue-green-app
+            namespace: blue-green-app
             valuesFile: values.yaml
   template:
     metadata:
