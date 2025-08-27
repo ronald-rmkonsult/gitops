@@ -9,17 +9,9 @@ spec:
     - list:
         elements:
           - name: frontend
-            chartPath: services/frontend/chart
-            namespace: web-frontend
-            valuesFile: values/dev.yaml
-          - name: backend
-            chartPath: services/backend/chart
-            namespace: web-backend
-            valuesFile: values/dev.yaml
-          - name: api-a
-            chartPath: services/api-a/chart
-            namespace: web-apis
-            valuesFile: values/dev.yaml
+            chartPath: app-configs/services/frontend
+            namespace: frontend
+            valuesFile: values.yaml
   template:
     metadata:
       name: '{{name}}-dev'
