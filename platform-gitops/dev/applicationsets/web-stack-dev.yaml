@@ -29,7 +29,7 @@ spec:
     spec:
       project: web-dev
       source:
-        repoURL: https://github.com/your-org/app-configs.git
+        repoURL: https://github.com/ronald-rmkonsult/gitops.git
         targetRevision: main
         path: '{{chartPath}}'
         helm:
