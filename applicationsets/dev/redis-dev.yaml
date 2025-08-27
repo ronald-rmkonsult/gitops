@@ -18,7 +18,7 @@ spec:
       project: default
       source:
         path: helm/redis
-        repoURL: git@github.com:ronald-rmkonsult/gitops.git
+        repoURL: https://github.com:ronald-rmkonsult/gitops.git
         targetRevision: main
       syncPolicy:
         syncOptions:
