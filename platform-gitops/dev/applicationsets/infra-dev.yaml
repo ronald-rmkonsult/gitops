@@ -9,7 +9,7 @@ spec:
     - list:
         elements:
           - name: redis
-            chartPath: services/redis
+            chartPath: app-configs/services/redis
             namespace: redis
             valuesFile: values/dev.yaml
   template:
