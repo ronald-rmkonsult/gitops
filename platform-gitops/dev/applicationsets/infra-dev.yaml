@@ -1,0 +1,38 @@
+# platform-gitops/dev/applicationsets/infra-dev.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infra-dev
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: redis
+            chartPath: services/redis
+            namespace: redis
+            valuesFile: values/dev.yaml
+  template:
+    metadata:
+      name: '{{name}}-dev'
+      labels:
+        app.kubernetes.io/part-of: infra
+        env: dev
+    spec:
+      project: web-dev
+      source:
+        repoURL: https://github.com/ronald-rmkonsult/gitops.git
+        targetRevision: main
+        path: '{{chartPath}}'
+        helm:
+          releaseName: '{{name}}'
+          valueFiles:
+            - '{{valuesFile}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated: { prune: true, selfHeal: true }
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true

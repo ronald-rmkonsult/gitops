@@ -1,0 +1,46 @@
+# platform-gitops/dev/applicationsets/web-stack-dev.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: web-stack-dev
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: frontend
+            chartPath: services/frontend/chart
+            namespace: web-frontend
+            valuesFile: values/dev.yaml
+          - name: backend
+            chartPath: services/backend/chart
+            namespace: web-backend
+            valuesFile: values/dev.yaml
+          - name: api-a
+            chartPath: services/api-a/chart
+            namespace: web-apis
+            valuesFile: values/dev.yaml
+  template:
+    metadata:
+      name: '{{name}}-dev'
+      labels:
+        app.kubernetes.io/part-of: web-stack
+        env: dev
+    spec:
+      project: web-dev
+      source:
+        repoURL: https://github.com/your-org/app-configs.git
+        targetRevision: main
+        path: '{{chartPath}}'
+        helm:
+          releaseName: '{{name}}'
+          valueFiles:
+            - '{{valuesFile}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated: { prune: true, selfHeal: true }
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
