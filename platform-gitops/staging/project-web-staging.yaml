@@ -1,4 +1,4 @@
-# platform-gitops/dev/project-web-dev.yaml
+# platform-gitops/dev/project-web-staging.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:

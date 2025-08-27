@@ -1,4 +1,4 @@
-# platform-gitops/dev/applicationsets/infra-dev.yaml
+# platform-gitops/dev/applicationsets/infra-staging.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:

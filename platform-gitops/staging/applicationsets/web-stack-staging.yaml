@@ -1,4 +1,4 @@
-# platform-gitops/dev/applicationsets/web-stack-dev.yaml
+# platform-gitops/dev/applicationsets/web-stack-staging.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -10,7 +10,7 @@ spec:
         elements:
           - name: frontend
             chartPath: app-configs/services/frontend
-            namespace: frontend
+            namespace: frontend-staging
             valuesFile: values.yaml
           - name: blue-green-app
             chartPath: app-configs/services/blue-green-app
@@ -18,7 +18,7 @@ spec:
             valuesFile: values.yaml
   template:
     metadata:
-      name: '{{name}}-dev'
+      name: '{{name}}-staging'
       labels:
         app.kubernetes.io/part-of: web-stack
         env: staging
