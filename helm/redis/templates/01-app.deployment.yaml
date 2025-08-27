@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis/{{ .redisversion }}
+        image: redis:latest
         ports:
         - containerPort: 6379
         readinessProbe:
