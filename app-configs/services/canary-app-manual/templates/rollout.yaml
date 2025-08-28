@@ -2,8 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: simple-rollout
-  namespace: blue-green-app
+  name: simple-canary-rollout
 spec:
   revisionHistoryLimit: 1
   replicas: 10
