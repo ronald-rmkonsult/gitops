@@ -16,10 +16,6 @@ spec:
             chartPath: app-configs/services/blue-green-app
             namespace: blue-green-app
             valuesFile: values.yaml
-          - name: canary-app
-            chartPath: app-configs/services/canary-app-manual
-            namespace: canary-app
-            valuesFile: values.yaml
   template:
     metadata:
       name: '{{name}}-dev'
