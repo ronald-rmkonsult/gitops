@@ -11,7 +11,7 @@ image:  # @schema additionalProperties: false
   # When a digest is required, `versionOverride` can be used to set the version.
   tag:  # @schema type:[string, null]
   # -- Traefik image pull policy
-  pullPolicy: IfNotPresent
+  pullPolicy: Never
 
 # -- Add additional label to all resources
 commonLabels: {}
