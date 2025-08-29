@@ -5,7 +5,7 @@ kubectl create namespace argo-rollouts
 kubectl apply -n argo-rollouts -f https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
 
 kubectl apply -f .\platform-gitops\staging\project-web-dev.yaml
-k apply -f .\platform-gitops\dev\root-appsets-dev.yaml
+kubectl apply -f .\platform-gitops\dev\root-appsets-dev.yaml
 
 kubectl apply -f .\platform-gitops\staging\project-web-staging.yaml
 kubectl apply -f .\platform-gitops\staging\root-appsets-staging.yaml
