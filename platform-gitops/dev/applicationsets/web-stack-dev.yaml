@@ -15,7 +15,7 @@ spec:
           - name: blue-green-app
             chartPath: app-configs/services/blue-green-app
             namespace: blue-green-app-dev
-            valuesFile: values.yaml
+            valuesFile: values.dev.yaml
   template:
     metadata:
       name: '{{name}}-dev'

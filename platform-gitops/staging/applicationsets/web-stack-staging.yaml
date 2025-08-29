@@ -15,7 +15,7 @@ spec:
           - name: blue-green-app
             chartPath: app-configs/services/blue-green-app
             namespace: blue-green-app-staging
-            valuesFile: values.yaml
+            valuesFile: values.staging.yaml
   template:
     metadata:
       name: '{{name}}-staging'
