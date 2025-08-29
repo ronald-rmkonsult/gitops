@@ -10,7 +10,7 @@ spec:
         elements:
           - name: redis
             chartPath: app-configs/services/redis
-            namespace: redis
+            namespace: redis-staging
             valuesFile: values.yaml
   template:
     metadata:

@@ -10,11 +10,11 @@ spec:
         elements:
           - name: frontend
             chartPath: app-configs/services/frontend
-            namespace: frontend
+            namespace: frontend-dev
             valuesFile: values.yaml
           - name: blue-green-app
             chartPath: app-configs/services/blue-green-app
-            namespace: blue-green-app
+            namespace: blue-green-app-dev
             valuesFile: values.yaml
   template:
     metadata:

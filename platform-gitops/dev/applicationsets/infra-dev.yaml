@@ -10,12 +10,12 @@ spec:
         elements:
           - name: redis
             chartPath: app-configs/services/redis
-            namespace: redis
+            namespace: redis-dev
             valuesFile: values.yaml
-          - name: traefik
-            chartPath: app-configs/services/traefik
-            namespace: traefik
-            valuesFile: values.yaml
+          # - name: traefik
+          #   chartPath: app-configs/services/traefik
+          #   namespace: traefik-dev
+          #   valuesFile: values.yaml
   template:
     metadata:
       name: '{{name}}-dev'
