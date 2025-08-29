@@ -1,0 +1,19 @@
+# platform-gitops/staging/project-web-staging.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: web-staging
+  namespace: argocd
+spec:
+  description: Web stack (staging)
+  sourceRepos:
+    - https://github.com/ronald-rmkonsult/gitops.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: "*"
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'

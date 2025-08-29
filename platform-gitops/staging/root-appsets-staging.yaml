@@ -1,0 +1,22 @@
+# platform-gitops/staging/root-appsets-staging.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-appsets-staging
+  namespace: argocd
+spec:
+  project: web-staging
+  source:
+    repoURL: https://github.com/ronald-rmkonsult/gitops.git
+    targetRevision: main
+    path: platform-gitops/staging/applicationsets
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
