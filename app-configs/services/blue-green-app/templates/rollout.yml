@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: simple-rollout
+  name: simple-rollout-{{ .Values.app.environment }}
 spec:
   replicas: 2
   strategy:

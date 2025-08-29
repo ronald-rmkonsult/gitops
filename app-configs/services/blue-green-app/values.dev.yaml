@@ -1,2 +1,4 @@
+app:
+  environment: dev
 service:
   nodePort: 32000

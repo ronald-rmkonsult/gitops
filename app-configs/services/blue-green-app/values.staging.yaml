@@ -1,2 +1,4 @@
+app:
+  environment: staging
 service:
   nodePort: 32001
